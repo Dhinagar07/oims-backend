@@ -4,6 +4,7 @@ const db= require('../models/db');
 const product=require('../controller/product');
 router.use(express.json())
 const multer = require('multer');
+const authenticatejwt = require("../utils/authenticateJWT")
 const path = require('path');
 
 // Set up multer storage and file naming
@@ -44,7 +45,7 @@ catch (error) {
 
 
 // Route to get all products
-router.post('/list', async (req, res) => {
+router.post('/list',authenticatejwt,async (req, res) => {
     try {
        const result= await product.listProduct(db);
        

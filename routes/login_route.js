@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db= require('../models/db');
 const admin=require('../controller/admin');
+const ct = require( '../utils/createToken');
 
 router.use(express.json());
 
@@ -12,7 +13,8 @@ router.post('/admin-login', async (req, res) => {
                 result=await admin.login(db,req.body);
                 console.log('resuuult',result);         
                 if (result) {
-                   res.status(200).json({ "message": "Successfully loggedin" });
+                    token = ct(req,res)
+                   res.status(200).json({ "message": "Successfully loggedin","token":token });
                } else {
                    res.status(200).json({ "error": "Failed to login" });
                }

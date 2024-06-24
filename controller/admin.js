@@ -6,9 +6,9 @@ class admin
         console.log(obj);      
                       
               const user = await db.Admin.sequelize.query(
-                'SELECT * FROM Admins WHERE email = :email',
+                'SELECT * FROM Admins WHERE id = :id',
                 {
-                  replacements: { email: obj.username },
+                  replacements: { id: obj.id },
                   type: QueryTypes.SELECT,
                 });
               console.log(user.length)
@@ -21,6 +21,7 @@ class admin
               if (user[0].password_hash=== obj.password) {
                 
                 console.log(user[0].password_hash, obj.password);
+                
                 return true;
               } else {
                 return false
