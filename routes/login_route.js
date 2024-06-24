@@ -14,9 +14,9 @@ router.post('/admin-login', async (req, res) => {
                 console.log('resuuult',result);         
                 if (result) {
                     token = ct(req,res)
-                   res.status(200).json({ "message": "Successfully loggedin","token":token });
+                    res.status(200).json({ "message": "Successfully loggedin","token":token });
                } else {
-                   res.status(200).json({ "error": "Failed to login" });
+                res.status(403).json({ "error": "Failed to login" });
                }
            } 
            catch (error) {

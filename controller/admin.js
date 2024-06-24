@@ -5,13 +5,13 @@ class admin
     static async login(db,obj) {
         console.log(obj);      
                       
-              const user = await db.Admin.sequelize.query(
-                'SELECT * FROM Admins WHERE id = :id',
+              const user = await db.sequelize.query(
+                'SELECT * FROM admins WHERE username = :username',
                 {
-                  replacements: { id: obj.id },
+                  replacements: { username: obj.username },
                   type: QueryTypes.SELECT,
                 });
-              console.log(user.length)
+              console.log(user)
               if (!user.length) {
                 
                 return false;

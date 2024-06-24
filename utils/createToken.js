@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 // Middleware function to create and send a JWT token
 function createToken(req, res, next) {
   console.log(req);
-  const user = req.body.email; // Replace this with your user retrieval logic
+  const user = req.body.username; // Replace this with your user retrieval logic
 
   if (!user) {
     return res.status(401).json({ message: "Authentication failed" });
