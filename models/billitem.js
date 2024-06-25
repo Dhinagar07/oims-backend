@@ -1,12 +1,12 @@
 module.exports = (sequelize, DataTypes) => {
-  const OrderItem = sequelize.define('billitem', {
+  const billitem = sequelize.define('billitem', {
     bill_item_id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true
   },
   bill_id: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     references: {
       model: "bills",
       key: "bill_id",
@@ -25,5 +25,5 @@ module.exports = (sequelize, DataTypes) => {
   },
   
 });
-return OrderItem; 
+return  billitem;
 };

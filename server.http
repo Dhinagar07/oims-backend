@@ -22,7 +22,6 @@ Content-Type: application/json
 }
 
 ###
-
 POST http://localhost:3001/product/list  HTTP/1.1
 Authorization:eyJhbGciOiJIUzI1NiJ9.ZGhpbmFnYXI3NzVAZ21haWwuY29t.rrCObwzgvhZ5HRmu_mssSLfnTVubqIfaFXCUKxxD1T8
 Content-Type: application/json 
@@ -78,9 +77,22 @@ Content-Type: application/json
     {
     "product_id":13,
     "quantity":5
-    }    ]
+        ]
 }
+
 ###
+
+POST http://localhost:3001/bill/createBill  HTTP/1.1
+Content-Type: application/json 
+
+{    
+    "bill_id": "0000",
+    "product_id": 13,
+    "quantity": 2
+}    
+###
+
+
 POST http://localhost:3001/order/update-order/69  HTTP/1.1
 Content-Type: application/json 
 
@@ -92,7 +104,7 @@ Content-Type: application/json
 POST http://localhost:3001/order/list/dhinagar775@gmail.com  HTTP/1.1
 Content-Type: application/json 
 ###
-POST http://localhost:3001/order/order-items/92  HTTP/1.1
+POST http://localhost:3001/r/order-items/92  HTTP/1.1
 Content-Type: application/json 
 ###
 

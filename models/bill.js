@@ -3,9 +3,8 @@ module.exports = (sequelize, DataTypes) => {
 
 const bill = sequelize.define('bill', {
   bill_id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    
+    type: DataTypes.STRING,
+    primaryKey: true,   
   },
   admin_id: {
     type: DataTypes.INTEGER,
