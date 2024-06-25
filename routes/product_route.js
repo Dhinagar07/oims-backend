@@ -2,30 +2,13 @@ const express = require('express');
 const router = express.Router();
 const db= require('../models/db');
 const product=require('../controller/product');
+const authenticatejwt = require('../utils/authenticateJWT') 
 router.use(express.json())
-const multer = require('multer');
-const authenticatejwt = require("../utils/authenticateJWT")
-const path = require('path');
 
-// Set up multer storage and file naming
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'uploads/'); // Save files in the uploads folder
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + path.extname(file.originalname)); // Rename files with current timestamp
-  },
-});
-
-const upload = multer({ storage: storage });
-
-router.post('/create-product', upload.single('image'), async (req, res) => {
+router.post('/create-product',authenticatejwt,  async (req, res) => {
   
   try {
-    console.log(req.file);
     console.log(req.body);
-    const imagePath = req.file ? 'uploads/' + req.file.filename : null;
-    req.body.image_path = imagePath;   
   
     result= await product.createProduct(db,req.body);
     console.log('res',result);
@@ -62,7 +45,7 @@ router.post('/list',authenticatejwt,async (req, res) => {
 });
 
 
-router.put('/:id', async (req, res) => {
+router.put('/:id',authenticatejwt, async (req, res) => {
     try {
         const productId = parseInt(req.params.id);
         console.log(req.body);
@@ -80,7 +63,7 @@ router.put('/:id', async (req, res) => {
         res.status(500).json({ "error": 'server error' });
     }
 });
-router.delete('/:id', async (req, res) => {
+router.delete('/:id',authenticatejwt, async (req, res) => {
     try{
     result= await product.deleteProduct(db,parseInt(req.params.id));
     

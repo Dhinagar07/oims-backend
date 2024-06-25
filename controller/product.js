@@ -18,15 +18,15 @@ class product
 
             console.log(obj); 
             const product = await db.Product.sequelize.query(
-                'INSERT INTO Products (name, description, price_per_unit, unit, stock_quantity, image_path, createdAt, updatedAt) VALUES (:name,:description , :price_per_unit,:unit,:stock_quantity,:image_path,NOW(),NOW())',
+                'INSERT INTO Products (name, price_per_unit, unit, stock_quantity, createdAt, updatedAt) VALUES (:name,:price_per_unit,:unit,:stock_quantity,NOW(),NOW())',
                 {
                   replacements: {
                     name: obj.name,
-                    description: obj.description,
-                    price_per_unit: obj.price,
+                    
+                    price_per_unit: obj.price_per_unit,
                     unit:obj.unit,
-                    stock_quantity:obj.stock_quantity,
-                    image_path:obj.image_path
+                    stock_quantity:obj.stock_quantity
+                    
 
                   },
                   type: QueryTypes.INSERT
@@ -87,7 +87,7 @@ class product
         }
             console.log(obj); 
             const product = await db.Product.sequelize.query(
-                'UPDATE Products SET name = :name, description=:description ,price_per_unit=:price_per_unit, unit=:unit, stock_quantity=:stock_quantity,updatedAt=NOW() WHERE product_id = :product_id',
+                'UPDATE Products SET name = :name, price_per_unit=:price_per_unit, unit=:unit, stock_quantity=:stock_quantity,updatedAt=NOW() WHERE product_id = :product_id',
                 {
                   replacements: {
                     name: obj.name,

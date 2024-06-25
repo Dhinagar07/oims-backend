@@ -23,6 +23,10 @@ module.exports = (sequelize, DataTypes) => {
     type: DataTypes.INTEGER,
     allowNull: false
   },
+  price: {
+    type: DataTypes.DOUBLE,
+    allowNull: false
+  },
   
 });
 return  billitem;

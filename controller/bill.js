@@ -3,7 +3,7 @@ const db = require('../models/db');
 
 class bill {
   static async createBillItem(obj) {
-    const { bill_id, product_id, quantity } = obj;
+    const { bill_id, product_id, quantity,price } = obj;
 
     let billIdToUse = bill_id;
 
@@ -22,11 +22,19 @@ class bill {
     const newBillItem = await db.billitem.create({
       bill_id: billIdToUse,
       product_id,
-      quantity
+      quantity,
+      price
     });
 
     return billIdToUse;
   }
+  static async updatebill(obj){
+    const { billItem_id, product_id, quantity,price} = obj;
+    db.billitem.update(obj,{
+      where:{billItem_id:bill}
+    })
+    return true
+  } 
 }
 
 module.exports = bill;

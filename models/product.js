@@ -9,10 +9,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    description: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+    
     price_per_unit: {
       type: DataTypes.FLOAT,
       allowNull: false,
@@ -25,10 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    image_path: {
-      type: DataTypes.STRING, // Store the image path
-      allowNull: true, // Allow null as initial value
-    },
+    
   });
 
   return Product;
