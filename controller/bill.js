@@ -30,11 +30,35 @@ class bill {
   }
   static async updatebill(obj){
     const { billItem_id, product_id, quantity,price} = obj;
-    db.billitem.update(obj,{
-      where:{billItem_id:bill}
+    const u=db.billitem.update(obj,{
+      where:{bill_item_id:billItem_id}
     })
-    return true
+    return u 
   } 
+
+  static async deleteBillItem(billItem_id) {
+    
+        const deletedRows = await db.billitem.destroy({
+            where: { bill_item_id:billItem_id }
+        });
+        return deletedRows > 0;
+    
+}
+  static async getBillById(bill_id) {
+    try {
+      const bill = await db.billitem.findAll({
+        where: { bill_id }});
+
+      if (!bill) {
+        return null; // Bill not found
+      }
+
+      return bill;
+    } catch (error) {
+      console.error(error);
+      throw new Error('Error fetching bill by ID');
+    }
+  }
 }
 
 module.exports = bill;

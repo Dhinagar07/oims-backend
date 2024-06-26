@@ -53,7 +53,7 @@ Authorization:eyJhbGciOiJIUzI1NiJ9.ZGhpdmE.qYDXJCaiCprOZ9apgeZKntI_GfrcriSlUtdeZ
 Content-Type: application/json 
 
 {    
-    "bill_id": "0000",
+    "bill_id": "1719379012134",
     "product_id": 13,
     "quantity": 2,
     "price":100.12
@@ -65,9 +65,30 @@ Authorization:eyJhbGciOiJIUzI1NiJ9.ZGhpdmE.qYDXJCaiCprOZ9apgeZKntI_GfrcriSlUtdeZ
 Content-Type: application/json 
 
 {    
-    "billItem_id": "0000",
+    "billItem_id": "1",
     "product_id": 13,
-    "quantity": 2,
+    "quantity": 21,
     "price":100.12
+}  
+
+###  
+
+DELETE  http://localhost:3001/bill/deletebill  HTTP/1.1
+Authorization:eyJhbGciOiJIUzI1NiJ9.ZGhpdmE.qYDXJCaiCprOZ9apgeZKntI_GfrcriSlUtdeZ5NaJjc
+Content-Type: application/json 
+
+{    
+    "billItem_id": "2"
+    
 }    
+###
+GET  http://localhost:3001/bill/getbill/1719379012134  HTTP/1.1
+Authorization:eyJhbGciOiJIUzI1NiJ9.ZGhpdmE.qYDXJCaiCprOZ9apgeZKntI_GfrcriSlUtdeZ5NaJjc
+Content-Type: application/json 
+
+ 
+    
+    
+    
+
 
