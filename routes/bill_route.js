@@ -73,6 +73,21 @@ router.get('/getbill/:bill_id', authenticatejwt, async (req, res) => {
   }
 });
 
+router.get('/getTodayBill', authenticatejwt, async (req, res) => {
+  try {
+    
+    const Bill = await bill.getRecordsForToday();
+
+    if (!Bill) {
+      return res.status(404).json({ error: 'Bill not found' });
+    }
+
+    res.status(200).json({Bill });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
 
 
 

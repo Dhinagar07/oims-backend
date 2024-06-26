@@ -85,6 +85,10 @@ Content-Type: application/json
 GET  http://localhost:3001/bill/getbill/1719379012134  HTTP/1.1
 Authorization:eyJhbGciOiJIUzI1NiJ9.ZGhpdmE.qYDXJCaiCprOZ9apgeZKntI_GfrcriSlUtdeZ5NaJjc
 Content-Type: application/json 
+###
+GET  http://localhost:3001/bill/getTodayBill  HTTP/1.1
+Authorization:eyJhbGciOiJIUzI1NiJ9.ZGhpdmE.qYDXJCaiCprOZ9apgeZKntI_GfrcriSlUtdeZ5NaJjc
+Content-Type: application/json 
 
  
     

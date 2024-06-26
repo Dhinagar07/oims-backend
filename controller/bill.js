@@ -59,6 +59,32 @@ class bill {
       throw new Error('Error fetching bill by ID');
     }
   }
+  
+  static async  getRecordsForToday() {
+    try {
+        const todayStart = new Date();
+        todayStart.setHours(0, 0, 0, 0); // Set time to midnight
+
+        const todayEnd = new Date();
+        todayEnd.setHours(23, 59, 59, 999); // Set time to end of day
+
+        const records = await db.bill.findAll({
+            where: {
+                createdAt: {
+                    [db.Sequelize.Op.between]: [todayStart, todayEnd],
+                },
+            },
+        });
+
+        return records;
+    } catch (error) {
+        console.error('Error fetching records:', error);
+        throw new Error('Error fetching bill  ID');
+    }
+}
+
+
+
 }
 
 module.exports = bill;
