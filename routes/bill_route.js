@@ -42,7 +42,7 @@ router.post('/updateBill',authenticatejwt, async (req, res) => {
   }
   
   });
-  router.delete('/deleteBill', authenticatejwt, async (req, res) => {
+  router.post('/deleteBill', authenticatejwt, async (req, res) => {
     try {
         const { billItem_id } = req.body;
         const result = await bill.deleteBillItem(billItem_id);

@@ -73,7 +73,7 @@ Content-Type: application/json
 
 ###  
 
-DELETE  http://localhost:3001/bill/deletebill  HTTP/1.1
+Post  http://localhost:3001/bill/deletebill  HTTP/1.1
 Authorization:eyJhbGciOiJIUzI1NiJ9.ZGhpdmE.qYDXJCaiCprOZ9apgeZKntI_GfrcriSlUtdeZ5NaJjc
 Content-Type: application/json 
 
