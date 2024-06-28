@@ -29,5 +29,9 @@ module.exports = (sequelize, DataTypes) => {
   },
   
 });
+billitem.belongsTo(sequelize.models.Product, {
+  foreignKey: 'product_id',
+   // Optional alias for the association
+});
 return  billitem;
 };

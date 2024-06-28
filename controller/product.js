@@ -18,14 +18,15 @@ class product
 
             console.log(obj); 
             const product = await db.Product.sequelize.query(
-                'INSERT INTO Products (name, price_per_unit, unit, stock_quantity, createdAt, updatedAt) VALUES (:name,:price_per_unit,:unit,:stock_quantity,NOW(),NOW())',
+                'INSERT INTO Products (name, price_per_unit, unit, stock_quantity,discount, createdAt, updatedAt) VALUES (:name,:price_per_unit,:unit,:stock_quantity,:discount,NOW(),NOW())',
                 {
                   replacements: {
                     name: obj.name,
                     
                     price_per_unit: obj.price_per_unit,
                     unit:obj.unit,
-                    stock_quantity:obj.stock_quantity
+                    stock_quantity:obj.stock_quantity,
+                    discount:obj.discount
                     
 
                   },

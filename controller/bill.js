@@ -44,22 +44,27 @@ class bill {
         return deletedRows > 0;
     
 }
-  static async getBillById(bill_id) {
-    try {
-      const bill = await db.billitem.findAll({
-        where: { bill_id }});
+static async getBillById(bill_id) {
+  try {
+    const bill = await db.billitem.findAll({
+      where: { bill_id },
+      include: {
+        model: db.Product, // Assuming you have a 'product' model
+        attributes: ['Product_id', 'name','unit','discount'], // Specify the attributes you want to include
+      },
+    });
 
-      if (!bill) {
-        return null; // Bill not found
-      }
-
-      return bill;
-    } catch (error) {
-      console.error(error);
-      throw new Error('Error fetching bill by ID');
+    if (!bill) {
+      return null; // Bill not found
     }
+
+    return bill;
+  } catch (error) {
+    console.error(error);
+    throw new Error('Error fetching bill by ID');
   }
-  
+}
+
   static async  getRecordsForToday() {
     try {
         const todayStart = new Date();
