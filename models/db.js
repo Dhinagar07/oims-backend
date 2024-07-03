@@ -16,7 +16,7 @@ db.billitem = require("./billitem")(sequelize, Sequelize);
 
 
 
-db.sequelize.sync({ force :false,alter:true }).then(() => {
+db.sequelize.sync({ force :true }).then(() => {
   console.log("database connected ");
 });
 

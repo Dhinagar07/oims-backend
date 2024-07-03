@@ -1,4 +1,4 @@
-const { QueryTypes } = require('sequelize');
+const { QueryTypes, where } = require('sequelize');
 
 class product
 {
@@ -17,22 +17,7 @@ class product
         }
 
             console.log(obj); 
-            const product = await db.Product.sequelize.query(
-                'INSERT INTO Products (name, price_per_unit, unit, stock_quantity,discount, createdAt, updatedAt) VALUES (:name,:price_per_unit,:unit,:stock_quantity,:discount,NOW(),NOW())',
-                {
-                  replacements: {
-                    name: obj.name,
-                    
-                    price_per_unit: obj.price_per_unit,
-                    unit:obj.unit,
-                    stock_quantity:obj.stock_quantity,
-                    discount:obj.discount
-                    
-
-                  },
-                  type: QueryTypes.INSERT
-                }
-              );
+            const product = await db.Product.create(obj);
               
             console.log(product); 
             
@@ -87,21 +72,9 @@ class product
             return false;
         }
             console.log(obj); 
-            const product = await db.Product.sequelize.query(
-                'UPDATE Products SET name = :name, price_per_unit=:price_per_unit, unit=:unit, stock_quantity=:stock_quantity,updatedAt=NOW() WHERE product_id = :product_id',
-                {
-                  replacements: {
-                    name: obj.name,
-                    description: obj.description,
-                    price_per_unit: obj.price_per_unit,
-                    unit:obj.unit,
-                    stock_quantity:obj.stock_quantity,
-                    product_id:obj.product_id
-
-                  },
-                  type: QueryTypes.UPDATE
-                }
-              );
+            const product =db.Product.update({obj,
+              where:{product_id:obj.product_id}
+            });
             if(product.length !=0){
                 return true;
             }

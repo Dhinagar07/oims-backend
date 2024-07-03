@@ -3,23 +3,25 @@ POST http://localhost:3001/auth/admin-login  HTTP/1.1
 Content-Type: application/json 
 
 {
-    "username":"dhiva",
+    "username":"dhina",
     "password":"aaaa"
 }
 
 ###
 
 POST http://localhost:3001/product/create-product  HTTP/1.1
-Authorization:eyJhbGciOiJIUzI1NiJ9.ZGhpdmE.qYDXJCaiCprOZ9apgeZKntI_GfrcriSlUtdeZ5NaJjc
+Authorization:eyJhbGciOiJIUzI1NiJ9.ZGhpbmE.AHXBXCHNjweHfGKj9tQ4vGtBK41kcJXaIxGbo481Nuw
 Content-Type: application/json 
 
 {
     
-    "name":"shampoo",
+    "name":"soap",
+    "asname":"soap",
+    "discount":2.5,
     
-    "price_per_unit":75,
+    "price_per_unit":7.5,
     "unit":"kg",    
-    "stock_quantity":1000
+    "stock_quantity":100.0
 }
 
 ###
@@ -29,18 +31,20 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:3001/product/6  HTTP/1.1
+PUT http://localhost:3001/product/1  HTTP/1.1
 Authorization:eyJhbGciOiJIUzI1NiJ9.ZGhpdmE.qYDXJCaiCprOZ9apgeZKntI_GfrcriSlUtdeZ5NaJjc
 Content-Type: application/json 
 
 {
     
-    "name":"cq",
+    "name":"soap",
+    "asname":"soap",
+    "discount":2.5,
     
-    "price_per_unit":75,
+    "price_per_unit":7.5,
+    
     "unit":"kg",    
-    "stock_quantity":1000
-    
+    "stock_quantity":100.0
 }
 
 ###

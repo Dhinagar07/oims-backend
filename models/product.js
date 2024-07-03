@@ -9,7 +9,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    
+    asname: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    barcode: { // Corrected typo from 'barcose' to 'barcode'
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     price_per_unit: {
       type: DataTypes.DOUBLE,
       allowNull: false,
@@ -25,9 +32,8 @@ module.exports = (sequelize, DataTypes) => {
     stock_quantity: {
       type: DataTypes.FLOAT,
       allowNull: false,
-    },
-    
+    }
   });
 
-  return Product;
+  return Product; // Moved the return statement to the correct position
 };
